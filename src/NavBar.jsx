@@ -30,17 +30,16 @@ export const NavBar = () => {
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">daisyUI</Link>
+        <Link to="/" className="btn btn-ghost text-xl">DevSocial</Link>
       </div>
       <div className="flex gap-2">
-        {/* Show welcome message if user exists */}
         {user && (
           <p className="font-medium">
             Hello, {user.firstName}
           </p>
         )}
 
-        <div className="dropdown dropdown-end mx-10">
+        {user && <div className="dropdown dropdown-end mx-10">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
 
@@ -62,7 +61,7 @@ export const NavBar = () => {
             <li><Link to="/requests">requests</Link></li>
             <li onClick={handlelogout}><a>Logout</a></li>
           </ul>
-        </div>
+        </div>}
       </div>
     </div>
   )

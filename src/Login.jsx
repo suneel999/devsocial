@@ -28,8 +28,9 @@ const Login = () => {
       dispatch(addUser(res.data));
       return navigate("/");
     } catch (err) {
-      console.log(err);
-      setError(err?.response?.data || "Login failed");
+      console.error("Login Error:", err);
+      const errorMessage = err?.response?.data?.message || "Login failed";
+      setError(typeof errorMessage === 'string' ? errorMessage : JSON.stringify(errorMessage));
     }
   };
 
@@ -43,8 +44,9 @@ const Login = () => {
       dispatch(addUser(res.data.data));
       return navigate("/profile");
     } catch (err) {
-      console.log(err);
-      setError(err?.response?.data || "Registration failed");
+      console.error("Registration Error:", err);
+      const errorMessage = err?.response?.data?.message || "Registration failed";
+      setError(typeof errorMessage === 'string' ? errorMessage : JSON.stringify(errorMessage));
     }
   };
 
@@ -53,8 +55,8 @@ const Login = () => {
       <div className="card bg-base-100 w-96 shadow-sm ">
         <figure className="px-10 pt-10">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-            alt="Shoes"
+            src="public/logo.png"
+            alt="logo"
             className="rounded-xl" />
         </figure>
         <div className="card-body items-center text-center">
